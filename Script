@@ -57,9 +57,9 @@ if not getgenv().settin then
 end
 
 local text = [[
-      💸 WIN BOBUX 💸
-    💸 GOLDEN CASINO 💸
-💸 type ".help" to get started 💸
+      💎 WIN BOBUX 💎
+    💎 DIAMOND CASINO 💎
+💎 type ".help" to get started 💎
 ]]
 
 local plrs = {}
