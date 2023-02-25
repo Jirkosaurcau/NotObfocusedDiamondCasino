@@ -315,13 +315,13 @@ msgdone.OnClientEvent:Connect(function(msgdata)
 		return
 	end
 	if message == '.play' then
-		chat('💸 You need to specify an amount! | .play [amount] 💸')
+		chat('💸 You need to specify an amount! | .play amount 💸')
 		return
 	end
 	if string.match(message, '.play ') then
 		local slotValx = string.gsub(message, '.play ', '')
 		if not tonumber(slotValx) or tonumber(slotValx) < 0 then
-			chat('💸 Enter a valid amount! | .play [amount] 💸')
+			chat('💸 Enter a valid amount! | .play amount 💸')
 			return
 		end
 		local slotVal = tonumber(slotValx)
@@ -350,7 +350,7 @@ msgdone.OnClientEvent:Connect(function(msgdata)
 		plrChatted:SetAttribute('Donated', newBalance)		
 	end
     if message == '.help' then
-        chat('.help | .withdraw | .play [amount] | .balance || Amount of bux you donate will be sent to your balance.')
+        chat('.help | .withdraw | .play amount | .balance || Amount of bux you donate will be sent to your balance.')
     end
     if message == '.withdraw' then
         if plrChatted:GetAttribute('Donated') < getgenv().settin.MinimumWithdrawAmount then
